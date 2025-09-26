@@ -501,7 +501,6 @@ For users who miss the migration deadline, you can create a merkle tree-based cl
 
 - Migration period must be ended
 - No existing merkle tree for the project
-- Backend claims API must be running
 
 #### Process
 
@@ -608,51 +607,6 @@ Platform admins can update global settings:
 - Withdraw accumulated platform fees
 - Transfer from treasury to admin
 - Track fee collection metrics
-
----
-
-## Backend Integration
-
-### Claims API Endpoints
-
-The backend provides REST APIs for merkle tree management:
-
-#### Key Endpoints
-
-1. **Upload Snapshot**
-
-   ```text
-   POST /api/claims/upload
-   Body: CSV with addresses and amounts
-   ```
-
-2. **Get Merkle Proof**
-
-   ```text
-   GET /api/merkle/proof/:address/:epoch
-   Returns: Array of proof hashes
-   ```
-
-3. **Verify Proof**
-
-   ```text
-   POST /api/merkle/verify
-   Body: { address, epoch, amount }
-   ```
-
-4. **Get Claim Amount**
-
-   ```text
-   GET /api/claims/:address/:epoch
-   Returns: Claimable amount
-   ```
-
-### Database Schema
-
-- **merkle_trees**: Stores tree data and roots
-- **claims**: Tracks individual claims
-- **distributions**: Maps addresses to amounts
-- **epochs**: Project-specific claim periods
 
 ---
 
@@ -864,57 +818,5 @@ For urgent issues during migration:
 **Slippage**: Acceptable price change during swap execution
 
 **Unprotected Migration**: Trust-based migration with immediate admin access
-
----
-
-## Appendix: Checklists
-
-### Pre-Migration Checklist
-
-- [ ] Pool ID obtained
-- [ ] New token ready or details prepared
-- [ ] Exchange rate calculated
-- [ ] Migration dates selected
-- [ ] Community notified
-- [ ] Wallet funded with SOL
-- [ ] Support channels ready
-- [ ] Backend claims API running (if using merkle)
-- [ ] Emergency contacts established
-
-### Launch Day Checklist
-
-- [ ] Create migration project
-- [ ] Deposit new tokens
-- [ ] Initialize project
-- [ ] Verify migration is active
-- [ ] Share migration link
-- [ ] Post announcement
-- [ ] Monitor first transactions
-- [ ] Check admin panel access
-- [ ] Verify all settings correct
-
-### Post-Migration Checklist
-
-- [ ] Migration period ended
-- [ ] Finalize swap executed
-- [ ] Pool created successfully
-- [ ] LP tokens locked
-- [ ] Merkle tree created (if needed)
-- [ ] Community notified
-- [ ] Pool address shared
-- [ ] Documentation updated
-- [ ] Monitor claims activity
-- [ ] Set calendar reminder for 90 days
-
-### Emergency Response Checklist
-
-- [ ] Identify the issue
-- [ ] Document the problem
-- [ ] Contact platform admin if needed
-- [ ] Request emergency withdraw toggle
-- [ ] Execute emergency withdraw
-- [ ] Communicate with community
-- [ ] File incident report
-- [ ] Plan recovery steps
 
 ---
